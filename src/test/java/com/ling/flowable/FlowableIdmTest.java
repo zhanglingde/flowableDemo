@@ -32,7 +32,7 @@ class FlowableIdmTest {
 
 
     /**
-     *
+     * 查询系统信息
      *
      *
      *
@@ -60,7 +60,7 @@ class FlowableIdmTest {
      */
     @Test
     void test14() {
-        List<Group> list = identityService.createNativeGroupQuery().sql("SELECT RES.* from ACT_ID_GROUP RES WHERE exists(select 1 from ACT_ID_MEMBERSHIP M where M.GROUP_ID_ = RES.ID_ and M.USER_ID_ = #{userId}) order by RES.ID_ asc").parameter("userId", "javaboy").list();
+        List<Group> list = identityService.createNativeGroupQuery().sql("SELECT RES.* from ACT_ID_GROUP RES WHERE exists(select 1 from ACT_ID_MEMBERSHIP M where M.GROUP_ID_ = RES.ID_ and M.USER_ID_ = #{userId}) order by RES.ID_ asc").parameter("userId", "ling").list();
         for (Group group : list) {
             logger.info("id:{},name:{}",group.getId(),group.getName());
         }
@@ -77,7 +77,7 @@ class FlowableIdmTest {
      */
     @Test
     void test13() {
-        List<Group> list = identityService.createGroupQuery().groupMember("javaboy").list();
+        List<Group> list = identityService.createGroupQuery().groupMember("ling").list();
         for (Group group : list) {
             logger.info("id:{},name:{}",group.getId(),group.getName());
         }
